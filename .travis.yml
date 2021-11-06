@@ -21,7 +21,7 @@ script:
 deploy:
   provider: heroku
   api_key: $HEROKU_API_KEY
-  edge: true 
+  # edge: True 
   app: devopslab-sa
   on:
       branch: main
