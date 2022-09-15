@@ -51,13 +51,11 @@ jobs:
         run: heroku container:push -a ${{ secrets.HEROKU_APP_NAME }} web
 
   Deploy:
-    needs: Build
-    runs-on: ubuntu-latest
+      needs: Build
+      runs-on: ubuntu-latest
 
-    steps:
-      # Adicionando o Repositório Remoto do Heroku para poder enviar o código da app
-      - name: Add Heroku Remote
-        run: heroku git:remote --app $HEROKU_APP_NAME
-        env:
-            HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
-
+      steps:
+        - name: Deploy Heroku
+          env:
+            HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+          run: heroku container:release -a ${{ secrets.HEROKU_APP_NAME }} web
