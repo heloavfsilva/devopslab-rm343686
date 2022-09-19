@@ -35,10 +35,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}  
-
-    # Enviando o código da App para o Heroku fazer Deploy
-      - name: Push to Heroku & Deploy
-        run: git push heroku HEAD:main --force
  
       - name: Login to Heroku Container registry
         env: 
